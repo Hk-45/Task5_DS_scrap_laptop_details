@@ -21,33 +21,33 @@ if __name__ == '__main__':
         laptopDetails = []
 
         for Details in mainContainer:
-            Title = Details.css('div.KzDlHZ')
-            specification = Details.css('ul.G4BRas')
-            Rating = Details.css('div.XQDdHH')
-            Price = Details.css('div.hl05eU')
-            Img = Details.css('img.DByuf4')
+            Title = Details.css('div.KzDlHZ')[0].text()
+            specification = Details.css('ul.G4BRas')[0].text()
+            Rating = Details.css('div.XQDdHH')[0].text()
+            Price = Details.css('div.hl05eU')[0].text()
+            Img = Details.css('img.DByuf4')[0].attributes.get('src')
 
-            titleText = Title[0].text()
-            specText = specification[0].text()
-            ratingText = Rating[0].text()
-            priceText = Price[0].text()
-            imgUrl = Img[0].attributes.get('src')
+            # titleText = Title[0].text()
+            # specText = specification[0].text()
+            # ratingText = Rating[0].text()
+            # priceText = Price[0].text()
+            # imgUrl = Img[0].attributes.get('src')
 
             Details = {
-                'Title': titleText,
-                'specification':specText,
-                'Rating':ratingText,
-                'Price':priceText,
-                'ImgUrl':imgUrl
+                'Title': Title,
+                'specification':specification,
+                'Rating':Rating,
+                'Price':Price,
+                'ImgUrl':Img
             }
             
             laptopDetails.append(Details)
 
-            print(f'title : {titleText}')
-            print(f'spec : {specText}')
-            print(f'rating : {ratingText}')
-            print(f'price : {priceText}')
-            print(f'imgUrl : {imgUrl}')
+            print(f'title : {Title}')
+            print(f'spec : {specification}')
+            print(f'rating : {Rating}')
+            print(f'price : {Price}')
+            print(f'imgUrl : {Img}')
 
 
 laptopData = pd.DataFrame(laptopDetails)
